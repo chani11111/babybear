@@ -34,23 +34,6 @@
     });
   }
 
-  /* ---------- סרטון הפתיחה: מתנגן אוטומטית בלי קול, עם כפתור עצירה ---------- */
-  var video = document.querySelector('.hero-media');
-  var pauseBtn = document.querySelector('.hero-pause');
-  function syncPause() {
-    var paused = video.paused;
-    pauseBtn.setAttribute('aria-pressed', String(paused));
-    pauseBtn.textContent = paused ? 'הפעלת הסרטון' : 'עצירת הסרטון';
-  }
-  if (video && pauseBtn) {
-    pauseBtn.addEventListener('click', function () {
-      if (video.paused) { video.play(); } else { video.pause(); }
-    });
-    video.addEventListener('play', syncPause);
-    video.addEventListener('pause', syncPause);
-    syncPause();
-  }
-
   /* ---------- קטלוג ---------- */
   var items = window.CATALOG || [];
   var grid = document.querySelector('.catalog-grid');

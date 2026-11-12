@@ -215,6 +215,8 @@ a { color: var(--teal); }
 .btn-solid:hover { background: var(--rose-dark); }
 .btn-ghost { color: #fff; border: 1.5px solid rgba(255, 255, 255, .8); }
 .btn-ghost:hover { background: #fff; color: var(--teal-deep); }
+.btn-outline { color: var(--teal); border: 1.5px solid var(--teal); }
+.btn-outline:hover { background: var(--teal); color: #fff; }
 
 /* ---------- פתיחה ---------- */
 .hero {
@@ -262,28 +264,19 @@ a { color: var(--teal); }
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: clamp(24px, 3vw, 38px); }
 
-.hero-pause,
 .hero-scroll {
   position: absolute;
   inset-block-end: 26px;
+  inset-inline-start: var(--gutter);
   z-index: 2;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   color: #fff;
   font: 400 .95rem var(--font-body);
   text-decoration: none;
 }
-.hero-pause {
-  inset-inline-end: var(--gutter);
-  padding: 8px 16px;
-  border: 1px solid rgba(255, 255, 255, .55);
-  border-radius: 999px;
-  background: rgba(15, 38, 46, .35);
-  cursor: pointer;
-}
-.hero-pause:hover { background: rgba(15, 38, 46, .65); }
-.hero-scroll { inset-inline-start: var(--gutter); gap: 10px; }
 .hero-scroll::after {
   content: "";
   width: 9px;
@@ -352,26 +345,6 @@ a { color: var(--teal); }
   width: 46%;
   aspect-ratio: 3 / 4;
   border: 8px solid var(--paper);
-}
-
-.facts {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0 clamp(16px, 3vw, 40px);
-  margin: 0;
-  border-top: 1px solid var(--line);
-}
-.facts > div { padding-top: 22px; }
-.facts dt { color: var(--muted); font-size: 1rem; }
-.facts dd {
-  margin: 6px 0 0;
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  line-height: 1.2;
-  color: var(--teal);
-  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- הייצור ---------- */
@@ -450,19 +423,28 @@ a { color: var(--teal); }
   margin: clamp(32px, 5vw, 56px) 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1.6vw, 20px);
 }
 .client-logos li {
   display: grid;
   place-items: center;
   aspect-ratio: 5 / 3;
-  border: 1.5px dashed #c9c2b6;
+  padding: clamp(12px, 2vw, 24px);
+  border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  color: var(--muted);
-  font-size: .95rem;
+  background: #fff;
 }
-.draft .client-logos li.todo { background: none; box-shadow: none; border-color: #d9b400; background-color: #fffbe0; }
+.client-logos img {
+  width: auto;
+  height: clamp(72px, 9vw, 112px);
+  max-width: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+@media (min-width: 700px) {
+  .client-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 
 /* ---------- קטלוג ---------- */
 .catalog { padding-top: 0; }
@@ -531,6 +513,7 @@ body:not(.draft) .card-sample { display: none; }
 .contact { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
 .contact-photo img { width: 100%; height: 100%; min-height: 380px; object-fit: cover; }
 .contact-text { align-self: center; padding: var(--section-y) var(--gutter); }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: clamp(24px, 3vw, 36px); }
 .contact-links { list-style: none; margin: clamp(28px, 4vw, 44px) 0 0; padding: 0; }
 .contact-links li { padding: 18px 0; border-top: 1px solid var(--line); }
 .contact-links li:last-child { border-bottom: 1px solid var(--line); }
@@ -568,13 +551,11 @@ body:not(.draft) .card-sample { display: none; }
 @media (max-width: 900px) {
   .about, .making-inner, .blankets, .branding, .contact { grid-template-columns: minmax(0, 1fr); }
   .making-text { position: static; }
-  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
   .delivery-list { grid-template-columns: minmax(0, 1fr); }
   .about-photos { max-width: 520px; }
   .blankets-photo { max-width: 520px; }
   .branding-text, .contact-text { padding-block: clamp(48px, 9vw, 80px); }
   .hero-scroll { display: none; }
-  .hero-pause { inset-inline: auto var(--gutter); }
 }
 @media (max-width: 520px) {
   .making-list li, .spec > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
