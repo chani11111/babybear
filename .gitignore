@@ -1,0 +1,5 @@
+# source photos and videos stay on the computer; the site uses the copies in assets/
+/תמונות/
+/.claude/
+# lower-resolution video that the page does not use
+/assets/video/hero-baby-2.mp4
