@@ -401,20 +401,59 @@ a { color: var(--teal); }
 .spec dd { margin: 0; justify-self: start; }
 
 /* ---------- מיתוג ---------- */
-.branding {
-  background: var(--oat);
+.branding { background: var(--oat); }
+.branding-inner {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: var(--section-y) var(--gutter) clamp(56px, 8vw, 96px);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
 }
-.branding-photo img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; }
-.branding-text {
-  align-self: center;
-  padding: var(--section-y) var(--gutter);
-  max-width: 640px;
+.branding h2 { font-size: clamp(2.5rem, 5.8vw, 4.75rem); }
+.branding h3 { font-size: 1.5rem; color: var(--teal); }
+.branding-text .lead { max-width: 28ch; }
+.branding-points { list-style: none; margin: clamp(24px, 3vw, 40px) 0 0; padding: 0; }
+.branding-points li {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid #d9d0c2;
 }
-.branding-text p + p { margin-top: 1.2rem; }
-.branding-text .todo { display: inline; }
+.branding-points strong { font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; color: var(--teal); }
+.branding-text .todo { display: inline-block; margin-top: 22px; }
+.branding-text .btn { margin-top: clamp(22px, 3vw, 34px); }
+
+.branding-designs ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 20px; }
+.branding-designs figure { margin: 0; }
+.branding-designs img {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 12px 28px rgba(36, 88, 106, .12);
+}
+.branding-designs figcaption { margin-top: 8px; font-size: .95rem; color: var(--muted); }
+
+.branding-photos {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 0 var(--gutter) var(--section-y);
+}
+.branding-photos ul {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2.4vw, 32px);
+}
+.branding-photos img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius); }
+@media (min-width: 900px) {
+  .branding-photos li:nth-child(2) { margin-top: 44px; }
+}
 
 /* ---------- לקוחות ---------- */
 .clients-head .lead { max-width: 40ch; }
@@ -549,16 +588,19 @@ body:not(.draft) .card-sample { display: none; }
 
 /* ---------- מסכים צרים ---------- */
 @media (max-width: 900px) {
-  .about, .making-inner, .blankets, .branding, .contact { grid-template-columns: minmax(0, 1fr); }
+  .about, .making-inner, .blankets, .branding-inner, .contact { grid-template-columns: minmax(0, 1fr); }
   .making-text { position: static; }
   .delivery-list { grid-template-columns: minmax(0, 1fr); }
   .about-photos { max-width: 520px; }
   .blankets-photo { max-width: 520px; }
-  .branding-text, .contact-text { padding-block: clamp(48px, 9vw, 80px); }
+  .contact-text { padding-block: clamp(48px, 9vw, 80px); }
   .hero-scroll { display: none; }
 }
 @media (max-width: 520px) {
-  .making-list li, .spec > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .making-list li, .spec > div, .branding-points li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .branding-photos ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .branding-photos li:nth-child(3) { grid-column: 1 / -1; }
+  .branding-photos li:nth-child(3) img { aspect-ratio: 4 / 3; }
   .hero-actions .btn { flex: 1 1 100%; }
   .hero-copy { padding-bottom: 96px; }
 }
