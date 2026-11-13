@@ -708,3 +708,118 @@ a { color: var(--teal); }
 .legal-main ul { margin: .7em 0 0; padding-inline-start: 1.3em; }
 .legal-main li + li { margin-top: .5em; }
 .legal-main a { color: var(--teal); text-underline-offset: 3px; }
+
+/* ---------- תפריט נגישות ---------- */
+.a11y-fab {
+  position: fixed;
+  inset-block-end: 18px;
+  inset-inline-end: 18px;
+  z-index: 160;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(23, 61, 74, .35);
+  cursor: pointer;
+  transition: background-color .2s var(--ease);
+}
+.a11y-fab:hover { background: var(--teal-deep); }
+.a11y-panel {
+  position: fixed;
+  inset-block-end: 86px;
+  inset-inline-end: 18px;
+  z-index: 160;
+  width: min(360px, calc(100vw - 36px));
+  max-height: min(72vh, 660px);
+  overflow-y: auto;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(23, 61, 74, .3);
+}
+.a11y-panel[hidden] { display: none; }
+.a11y-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px 12px 16px;
+  background: var(--teal);
+  color: #fff;
+  border-radius: 20px 20px 0 0;
+}
+.a11y-head h2 { flex: 1; margin: 0; font: 500 1.25rem var(--font-display); color: #fff; }
+.a11y-small {
+  min-height: 44px;
+  padding: 6px 14px;
+  border: 1.5px solid rgba(255, 255, 255, .7);
+  border-radius: 999px;
+  background: none;
+  color: #fff;
+  font: 500 .95rem var(--font-body);
+  cursor: pointer;
+}
+.a11y-small:hover { background: rgba(255, 255, 255, .16); }
+.a11y-group { padding: 14px 16px 2px; }
+.a11y-group h3 { margin: 0 0 8px; font: 500 .95rem var(--font-body); color: var(--muted); }
+.a11y-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.a11y-opt {
+  min-height: 60px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 14px;
+  background: #f0efec;
+  color: var(--ink);
+  font: 500 .95rem/1.3 var(--font-body);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color .2s var(--ease), color .2s var(--ease);
+}
+.a11y-opt:hover { background: #e4e2dc; }
+.a11y-opt[aria-pressed="true"] { background: var(--teal); color: #fff; }
+.a11y-foot { margin: 0; padding: 12px 16px 16px; font-size: .95rem; }
+.a11y-foot a { color: var(--teal); }
+.a11y-mask { position: fixed; inset-inline: 0; z-index: 150; background: rgba(0, 0, 0, .62); pointer-events: none; }
+.a11y-mask[hidden] { display: none; }
+.a11y-mask-top { top: 0; height: 0; }
+.a11y-mask-bottom { top: 100%; bottom: 0; }
+
+/* ---------- התאמות שהגולש בוחר בתפריט הנגישות ---------- */
+html.a11y-text-1 { font-size: 112.5%; }
+html.a11y-text-2 { font-size: 125%; }
+html.a11y-text-3 { font-size: 150%; }
+html.a11y-line :is(p, li, dd, dt, span, a, label, figcaption, h1, h2, h3) { line-height: 2 !important; }
+html.a11y-font, html.a11y-font * { font-family: Arial, Helvetica, sans-serif !important; }
+html.a11y-contrast {
+  --paper: #fff; --oat: #fff; --mint: #fff; --blush: #fff;
+  --teal: #000; --teal-deep: #000;
+  --rose: #8a0f38; --rose-dark: #5f0a26;
+  --ink: #000; --muted: #1a1a1a; --line: #000;
+}
+html.a11y-contrast body { background: #fff; color: #000; }
+html.a11y-contrast .hero-shade { background: rgba(0, 0, 0, .68); }
+html.a11y-contrast a { text-decoration: underline; }
+html.a11y-gray { filter: grayscale(1); }
+html.a11y-noimg img:not(.brand-logo), html.a11y-noimg video { visibility: hidden !important; }
+html.a11y-still *, html.a11y-still *::before, html.a11y-still *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+html.a11y-still.js .reveal { opacity: 1 !important; transform: none !important; }
+html.a11y-links a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3px;
+  outline: 2px solid #b0002f;
+  outline-offset: 2px;
+}
+html.a11y-cursor, html.a11y-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24'%3E%3Cpath d='M4 2l16 9-7 2 4 8-3 1-4-8-5 5z' fill='black' stroke='white' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, auto !important;
+}
