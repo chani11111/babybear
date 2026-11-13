@@ -448,6 +448,28 @@ a { color: var(--teal); }
 }
 .branding-designs figcaption { margin-top: 8px; font-size: .95rem; color: var(--muted); }
 
+/* אריזה: פאנל לבן משלו, כדי שיהיה ברור שזה נושא נפרד ולא עוד שורה בתוך המיתוג */
+.branding-packaging {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 0 var(--gutter) clamp(56px, 8vw, 96px);
+}
+.packaging-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(20px, 4vw, 64px);
+  align-items: center;
+  padding: clamp(28px, 4.5vw, 64px);
+  background: #fff;
+  border-radius: var(--radius);
+}
+.branding .packaging-panel h3 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.2; }
+.packaging-panel p { max-width: 54ch; font-size: clamp(1.05rem, 1.4vw, 1.15rem); line-height: 1.8; }
+.packaging-panel p + p { margin-top: 1rem; }
+@media (max-width: 900px) {
+  .packaging-panel { grid-template-columns: minmax(0, 1fr); }
+}
+
 .branding-photos {
   max-width: var(--max);
   margin-inline: auto;
