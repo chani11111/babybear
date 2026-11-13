@@ -523,6 +523,10 @@ a { color: var(--teal); }
   .client-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .client-logos li.client-photo { grid-column: auto; }
 }
+/* a round logo has a lot of empty space around it, so on wide screens it gets a bit more height */
+@media (min-width: 960px) {
+  .client-logos li.client-tall img { height: 150px; }
+}
 
 /* ---------- קטלוג ---------- */
 .catalog { padding-top: 0; }
