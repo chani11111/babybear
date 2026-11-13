@@ -688,3 +688,23 @@ a { color: var(--teal); }
 /* ---------- לוגו ---------- */
 .brand-logo { display: block; height: 50px; width: auto; fill: currentColor; }
 .site-footer .brand-logo { height: 42px; color: #fff; }
+
+/* ---------- קישורים משפטיים בתחתית ---------- */
+.footer-links { display: flex; flex-wrap: wrap; gap: 0 22px; }
+.footer-links a { color: inherit; min-height: 44px; display: inline-flex; align-items: center; }
+.footer-links a[aria-current="page"] { text-decoration: none; font-weight: 500; color: #fff; }
+.contact-note { margin: 14px 0 0; font-size: .95rem; color: var(--muted); }
+.contact-note a { color: var(--teal); }
+
+/* ---------- עמודי מדיניות, תנאים ונגישות ---------- */
+.legal-back { color: inherit; font-weight: 500; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.legal-back:hover { text-decoration: underline; }
+.legal-main { max-width: 760px; margin-inline: auto; padding: 128px var(--gutter) clamp(64px, 9vw, 110px); }
+.legal-main h1 { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--teal); }
+.legal-meta { margin-top: 10px; color: var(--muted); }
+.legal-main h2 { margin-top: 2.2em; font-size: clamp(1.35rem, 2.6vw, 1.75rem); color: var(--teal); }
+.legal-main p, .legal-main li { font-size: 1.06rem; line-height: 1.85; }
+.legal-main p { margin-top: .9em; }
+.legal-main ul { margin: .7em 0 0; padding-inline-start: 1.3em; }
+.legal-main li + li { margin-top: .5em; }
+.legal-main a { color: var(--teal); text-underline-offset: 3px; }
