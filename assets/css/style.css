@@ -332,18 +332,23 @@ a { color: var(--teal); }
   row-gap: clamp(48px, 7vw, 96px);
   align-items: center;
 }
-.about-text p + p { margin-top: 1.2rem; }
-.about-text .todo { max-width: 46ch; display: inline; }
+.about-text h2 { margin-bottom: clamp(20px, 2.6vw, 32px); }
+.about-copy {
+  max-width: 56ch;
+  font-size: clamp(1.08rem, 1.45vw, 1.2rem);
+  line-height: 1.8;
+}
+.about-copy + .about-copy { margin-top: 1.3rem; }
 
-.about-photos { position: relative; padding-block-end: 16%; padding-inline-start: 22%; }
+.about-photos { position: relative; padding-block-end: 16%; padding-inline-start: 12%; }
 .about-photos img { border-radius: var(--radius); object-fit: cover; }
 .about-photo-a { width: 100%; aspect-ratio: 4 / 5; }
 .about-photo-b {
   position: absolute;
   inset-inline-start: 0;
   inset-block-end: 0;
-  width: 46%;
-  aspect-ratio: 3 / 4;
+  width: 62%;
+  aspect-ratio: 4 / 3;
   border: 8px solid var(--paper);
 }
 
