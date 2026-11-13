@@ -53,15 +53,14 @@
   /* גלריה: גוללים או לוחצים על החצים. הגלילה עצמה עושה את העבודה, והחצים רק מזיזים אותה. */
   function slider(item) {
     var wrap = el('div', 'slider');
-    wrap.setAttribute('role', 'group');
-    wrap.setAttribute('aria-roledescription', 'גלריית תמונות');
-    wrap.setAttribute('aria-label', item.name);
 
-    var track = el('ul', 'slides');
+    var track = el('div', 'slides');
     track.tabIndex = 0;
+    track.setAttribute('role', 'group');
+    track.setAttribute('aria-roledescription', 'גלריית תמונות');
     track.setAttribute('aria-label', 'תמונות של ' + item.name);
     item.images.forEach(function (im, i) {
-      var slide = el('li', 'slide');
+      var slide = el('div', 'slide');
       slide.setAttribute('role', 'group');
       slide.setAttribute('aria-roledescription', 'תמונה');
       slide.setAttribute('aria-label', (i + 1) + ' מתוך ' + item.images.length);

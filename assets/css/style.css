@@ -215,7 +215,9 @@ a { color: var(--teal); }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgba(15, 38, 46, .78) 0%, rgba(15, 38, 46, .25) 55%, rgba(15, 38, 46, .35) 100%);
+    /* כהות שנמדדה מול פריימים של הסרטון, כדי שהטקסט הלבן יעמוד בניגודיות של לפחות 4.5:1 */
+    linear-gradient(to bottom, rgba(15, 38, 46, .65) 0, rgba(15, 38, 46, 0) 160px),
+    linear-gradient(to top, rgba(15, 38, 46, .78) 0%, rgba(15, 38, 46, .55) 55%, rgba(15, 38, 46, .45) 100%);
 }
 .hero-copy {
   position: relative;
