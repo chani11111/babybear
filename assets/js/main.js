@@ -12,6 +12,16 @@
     }, { rootMargin: '-80px 0px 0px 0px' }).observe(hero);
   }
 
+  /* כפתור הוואטסאפ הצף מוסתר כל עוד הפתיחה ממלאת את המסך (שם כבר יש קריאה לפעולה אחרת) */
+  document.addEventListener('DOMContentLoaded', function () {
+    var waFab = document.querySelector('.wa-fab');
+    if (waFab && hero && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        waFab.classList.toggle('is-hidden', entries[0].intersectionRatio > 0.35);
+      }, { threshold: [0, 0.35, 1] }).observe(hero);
+    }
+  });
+
   /* ---------- תפריט במובייל ---------- */
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('site-nav');

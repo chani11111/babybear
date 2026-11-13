@@ -843,4 +843,6 @@ html.a11y-cursor, html.a11y-cursor * {
   transition: background-color .2s var(--ease), transform .2s var(--ease);
 }
 .wa-fab:hover { background: #0e7a42; }
+.wa-fab { transition: background-color .2s var(--ease), opacity .25s var(--ease), transform .25s var(--ease), visibility .25s; }
+.wa-fab.is-hidden { opacity: 0; visibility: hidden; transform: scale(.85); }
 .wa-fab svg { width: 30px; height: 30px; }
