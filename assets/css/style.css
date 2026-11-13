@@ -391,7 +391,8 @@ a { color: var(--teal); }
   gap: clamp(32px, 7vw, 110px);
   align-items: center;
 }
-.blankets-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
+.blankets-photo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius); }
+.blankets-text .lead { max-width: 42ch; }
 
 .spec { margin: clamp(28px, 4vw, 44px) 0 0; }
 .spec > div {
