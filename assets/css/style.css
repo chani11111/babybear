@@ -579,6 +579,7 @@ a { color: var(--teal); }
 
 .card-body { padding-top: 16px; }
 .card h3 { font-size: 1.4rem; color: var(--teal); line-height: 1.3; }
+.card-desc { margin: 8px 0 0; font-size: 1.05rem; }
 .card-spec { margin: 12px 0 0; font-size: .98rem; }
 .card-spec > div { display: flex; gap: 10px; padding: 6px 0; border-top: 1px solid var(--line); }
 .card-spec dt { color: var(--muted); min-width: 3.5rem; }

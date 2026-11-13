@@ -125,6 +125,7 @@
     li.appendChild(slider(item));
     var body = el('div', 'card-body');
     body.appendChild(el('h3', null, item.name));
+    if (item.description) body.appendChild(el('p', 'card-desc', item.description));
     if (item.specs && item.specs.length) {
       var dl = el('dl', 'card-spec');
       item.specs.forEach(function (row) {
