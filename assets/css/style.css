@@ -14,7 +14,6 @@
   --ink: #2a2e33;
   --muted: #59626a;
   --line: #e3ddd3;
-  --todo: #fff1a8;
 
   --font-display: "Fredoka", "Heebo", system-ui, sans-serif;
   --font-body: "Heebo", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -81,30 +80,6 @@ a { color: var(--teal); }
   border-radius: var(--radius-sm);
 }
 .skip:focus { top: 12px; }
-
-/* ---------- סימוני טיוטה ---------- */
-.draft .todo {
-  background: var(--todo);
-  box-shadow: 0 0 0 4px var(--todo);
-  border-radius: 3px;
-  color: #4a3f00;
-}
-.draft-note { display: none; }
-.draft .draft-note {
-  display: block;
-  position: absolute;
-  inset-block-start: 84px;
-  inset-inline-end: 14px;
-  z-index: 90;
-  max-width: min(320px, calc(100vw - 28px));
-  background: var(--todo);
-  color: #4a3f00;
-  font-size: .875rem;
-  line-height: 1.4;
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 6px 24px rgba(23, 61, 74, .18);
-}
 
 /* ---------- כותרת עליונה ---------- */
 .site-header {
@@ -374,7 +349,6 @@ a { color: var(--teal); }
   border-top: 1px solid rgba(255, 255, 255, .2);
 }
 .making-list strong { font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; color: #fff; }
-.making-list .todo { justify-self: start; }
 
 .making-photos { display: grid; gap: clamp(20px, 3vw, 40px); }
 .making-photos figure { margin: 0; }
@@ -622,7 +596,7 @@ a { color: var(--teal); }
 }
 .delivery-list > div { border-top: 2px solid var(--teal); padding-top: 18px; }
 .delivery-list dt { font-family: var(--font-display); font-weight: 500; font-size: 1.35rem; color: var(--teal); }
-.delivery-list dd { margin: 8px 0 0; display: inline-block; }
+.delivery-list dd { margin: 8px 0 0; }
 
 /* ---------- יצירת קשר ---------- */
 .contact { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
