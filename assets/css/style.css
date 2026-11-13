@@ -732,11 +732,11 @@ a { color: var(--teal); }
 .a11y-fab:hover { background: var(--teal-deep); }
 .a11y-panel {
   position: fixed;
-  inset-block-end: 86px;
+  inset-block-end: 154px;
   inset-inline-end: 18px;
   z-index: 160;
   width: min(360px, calc(100vw - 36px));
-  max-height: min(72vh, 660px);
+  max-height: min(72vh, calc(100vh - 190px), 660px);
   overflow-y: auto;
   background: #fff;
   color: var(--ink);
@@ -825,3 +825,22 @@ html.a11y-links a {
 html.a11y-cursor, html.a11y-cursor * {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24'%3E%3Cpath d='M4 2l16 9-7 2 4 8-3 1-4-8-5 5z' fill='black' stroke='white' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, auto !important;
 }
+
+/* ---------- כפתור וואטסאפ צף, מעל כפתור הנגישות ---------- */
+.wa-fab {
+  position: fixed;
+  inset-block-end: 86px;
+  inset-inline-end: 18px;
+  z-index: 160;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #12924f;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .28);
+  transition: background-color .2s var(--ease), transform .2s var(--ease);
+}
+.wa-fab:hover { background: #0e7a42; }
+.wa-fab svg { width: 30px; height: 30px; }
