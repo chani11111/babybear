@@ -11,7 +11,14 @@
   var video = document.querySelector('.hero-media');
 
   var defaults = { text: 0, line: false, font: false, contrast: false, gray: false, noimg: false, still: false, links: false, mask: false, cursor: false };
-  var state = JSON.parse(JSON.stringify(defaults));
+
+  /* מי שהגדיר "הפחתת תנועה" במכשיר מתחיל עם "השהיית אנימציות" דלוקה (הסרטון עומד), ויכול לכבות אותה בתפריט */
+  function fresh() {
+    var s = JSON.parse(JSON.stringify(defaults));
+    s.still = reduceMotion;
+    return s;
+  }
+  var state = fresh();
 
   try {
     var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
@@ -128,7 +135,7 @@
     if (e.key === 'Escape' && !panel.hidden) setOpen(false, true);
   });
   resetBtn.addEventListener('click', function () {
-    state = JSON.parse(JSON.stringify(defaults));
+    state = fresh();
     save();
     apply();
   });
@@ -157,7 +164,7 @@
     });
 
     if (video) {
-      if (state.still || reduceMotion) video.pause();
+      if (state.still) video.pause();
       else if (video.paused) { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
     }
 

@@ -3,14 +3,6 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* מי שהגדיר "הפחתת תנועה" במכשיר: סרטון הפתיחה לא מתנגן, ומוצגת במקומו תמונה */
-  var heroVideo = document.querySelector('.hero-media');
-  if (heroVideo && reduceMotion) {
-    heroVideo.removeAttribute('autoplay');
-    heroVideo.pause();
-    heroVideo.addEventListener('play', function () { heroVideo.pause(); });
-  }
-
   /* ---------- כותרת עליונה: רקע לבן אחרי שעוברים את הפתיחה ---------- */
   var header = document.querySelector('.site-header');
   var hero = document.querySelector('.hero');
