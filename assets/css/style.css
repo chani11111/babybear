@@ -528,48 +528,83 @@ a { color: var(--teal); }
 
 /* ---------- קטלוג ---------- */
 .catalog { padding-top: 0; }
-.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(24px, 3vw, 36px); }
-.filter {
-  min-height: 44px;
-  padding: 8px 22px;
-  border: 1.5px solid var(--teal);
-  border-radius: 999px;
-  background: none;
-  color: var(--teal);
-  font: 500 1rem var(--font-body);
-  cursor: pointer;
-  transition: background-color .2s var(--ease), color .2s var(--ease);
-}
-.filter:hover { background: var(--mint); }
-.filter[aria-pressed="true"] { background: var(--teal); color: #fff; }
+.catalog-head .lead { max-width: 48ch; }
 
 .catalog-grid {
   list-style: none;
   margin: clamp(28px, 4vw, 48px) 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
-  gap: clamp(28px, 3.5vw, 48px) clamp(18px, 2.5vw, 32px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(32px, 4vw, 56px) clamp(18px, 2.5vw, 32px);
+  align-items: start;
 }
-.card-photo { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--oat); }
-.card-photo img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  transition: transform .6s var(--ease);
+@media (min-width: 600px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* גלריית תמונות בתוך כל כרטיס */
+.slider { position: relative; border-radius: var(--radius); overflow: hidden; background: #f6f5f2; }
+.slides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
 }
-.card:hover .card-photo img { transform: scale(1.04); }
-.card-sample {
+.slides::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 100%; scroll-snap-align: start; }
+.slide img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.slider-btn {
   position: absolute;
-  inset-block-start: 12px;
-  inset-inline-start: 12px;
-  padding: 2px 10px;
-  font-size: .85rem;
+  inset-block-start: 50%;
+  translate: 0 -50%;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .92);
+  color: var(--teal);
+  box-shadow: 0 4px 14px rgba(23, 61, 74, .22);
+  cursor: pointer;
+  transition: background-color .2s var(--ease), opacity .2s var(--ease);
 }
-body:not(.draft) .card-sample { display: none; }
+.slider-btn:hover:not(:disabled) { background: #fff; }
+.slider-btn:disabled { opacity: .35; cursor: default; }
+.slider-btn::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  border: solid currentColor;
+  border-width: 0 0 2.5px 2.5px;
+}
+/* האתר מימין לשמאל: "הבאה" בצד שמאל ומצביעה שמאלה, "הקודמת" בצד ימין ומצביעה ימינה */
+.slider-next { inset-inline-end: 10px; }
+.slider-next::before { rotate: 45deg; translate: 2px 0; }
+.slider-prev { inset-inline-start: 10px; }
+.slider-prev::before { rotate: -135deg; translate: -2px 0; }
+.slider-count {
+  position: absolute;
+  inset-block-end: 10px;
+  inset-inline-start: 50%;
+  translate: 50% 0;
+  margin: 0;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: rgba(23, 61, 74, .72);
+  color: #fff;
+  font-size: .85rem;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+}
+
 .card-body { padding-top: 16px; }
-.card-cat { color: var(--muted); font-size: .95rem; }
-.card h3 { font-size: 1.4rem; color: var(--teal); margin-top: 2px; }
+.card h3 { font-size: 1.4rem; color: var(--teal); line-height: 1.3; }
 .card-spec { margin: 12px 0 0; font-size: .98rem; }
 .card-spec > div { display: flex; gap: 10px; padding: 6px 0; border-top: 1px solid var(--line); }
 .card-spec dt { color: var(--muted); min-width: 3.5rem; }
