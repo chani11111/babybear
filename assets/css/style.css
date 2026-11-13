@@ -493,7 +493,7 @@ a { color: var(--teal); }
 }
 
 /* ---------- לקוחות ---------- */
-.clients-head .lead { max-width: 40ch; }
+.clients-head .lead { max-width: 52ch; }
 .client-logos {
   list-style: none;
   margin: clamp(32px, 5vw, 56px) 0 0;
@@ -518,8 +518,12 @@ a { color: var(--teal); }
   object-fit: contain;
   mix-blend-mode: multiply;
 }
+/* a logo that comes as a photo of a sign fills its whole tile; on phones it takes a full row */
+.client-logos li.client-photo { grid-column: 1 / -1; padding: 0; overflow: hidden; border-color: transparent; background: #1f2233; }
+.client-logos li.client-photo img { width: 100%; height: 100%; max-width: none; object-fit: cover; mix-blend-mode: normal; }
 @media (min-width: 700px) {
-  .client-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .client-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .client-logos li.client-photo { grid-column: auto; }
 }
 
 /* ---------- קטלוג ---------- */
