@@ -119,8 +119,11 @@
 
   document.body.appendChild(maskTop);
   document.body.appendChild(maskBottom);
-  document.body.appendChild(panel);
-  document.body.appendChild(fab);
+  var host = el('aside', 'a11y-host');
+  host.setAttribute('aria-label', 'כלי נגישות');
+  host.appendChild(panel);
+  host.appendChild(fab);
+  document.body.appendChild(host);
 
   /* ---------- פתיחה וסגירה ---------- */
   function setOpen(open, returnFocus) {
