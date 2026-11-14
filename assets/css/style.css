@@ -846,3 +846,27 @@ html.a11y-cursor, html.a11y-cursor * {
 .wa-fab { transition: background-color .2s var(--ease), opacity .25s var(--ease), transform .25s var(--ease), visibility .25s; }
 .wa-fab.is-hidden { opacity: 0; visibility: hidden; transform: scale(.85); }
 .wa-fab svg { width: 30px; height: 30px; }
+
+/* ---------- תחתית: מותג, כתובות וקישורים ---------- */
+.site-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
+  gap: 28px clamp(28px, 5vw, 64px);
+  align-items: start;
+  padding: 40px var(--gutter);
+  /* משאיר מקום לכפתורי הוואטסאפ והנגישות הצפים, כדי שלא יכסו קישורים */
+  padding-inline-end: max(var(--gutter), 104px);
+}
+.footer-brand .brand { display: inline-flex; }
+.site-footer .brand-logo { height: 46px; }
+.footer-tag { margin: 14px 0 0; max-width: 34ch; line-height: 1.7; }
+.footer-tag strong { display: block; color: #fff; font-weight: 500; }
+.footer-address { font-style: normal; }
+.footer-address p { margin: 0 0 .6em; line-height: 1.6; }
+.footer-address strong { color: #fff; font-weight: 500; }
+.footer-more { display: flex; flex-direction: column; align-items: flex-start; }
+.site-footer .footer-links { flex-direction: column; gap: 0; }
+@media (max-width: 900px) {
+  .site-footer { grid-template-columns: minmax(0, 1fr); }
+}
+.client-logos li.client-photo-half { grid-column: auto; }
