@@ -151,6 +151,19 @@
 
   if (grid) items.forEach(function (item) { grid.appendChild(card(item)); });
 
+  /* לוח הצבעים: לחיצה על התמונה הקטנה פותחת אותה גדולה, ובלי JavaScript היא נפתחת בלשונית חדשה */
+  var chartLink = document.querySelector('.color-chart');
+  var chartDialog = document.getElementById('colors-dialog');
+  if (chartLink && chartDialog && typeof chartDialog.showModal === 'function') {
+    chartLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      chartDialog.showModal();
+    });
+    chartDialog.addEventListener('click', function (e) {
+      if (e.target === chartDialog) chartDialog.close();
+    });
+  }
+
   /* ---------- חשיפה בגלילה ---------- */
   var revealEls = document.querySelectorAll('.reveal');
   if (reduceMotion || !('IntersectionObserver' in window)) {

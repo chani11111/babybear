@@ -527,7 +527,7 @@ a { color: var(--teal); }
 }
 
 /* ---------- קטלוג ---------- */
-.catalog { padding-top: 0; }
+.catalog { padding-top: var(--section-y); }
 .catalog-head .lead { max-width: 48ch; }
 
 .catalog-grid {
@@ -864,3 +864,14 @@ html.a11y-cursor, html.a11y-cursor * {
   .site-footer { grid-template-columns: minmax(0, 1fr); }
 }
 
+
+/* ---------- לוח הצבעים בשורת הצבעים ---------- */
+.color-chart { display: block; width: fit-content; margin-top: 12px; color: var(--teal); font-size: .92rem; text-decoration: none; }
+.color-chart img { display: block; width: 150px; height: auto; border-radius: 10px; box-shadow: 0 6px 18px rgba(23, 61, 74, .18); }
+.color-chart span { display: block; margin-top: 6px; text-decoration: underline; }
+.chart-dialog { max-width: min(92vw, 560px); max-height: 92vh; padding: 12px; border: 0; border-radius: 16px; background: #fff; overflow: auto; }
+.chart-dialog::backdrop { background: rgba(15, 38, 46, .72); }
+.chart-dialog img { display: block; width: 100%; height: auto; max-height: calc(92vh - 96px); object-fit: contain; border-radius: 10px; }
+.chart-close { margin-top: 10px; min-height: 44px; padding: 6px 24px; border: 1.5px solid var(--teal); border-radius: 999px; background: none; color: var(--teal); font: 500 1rem var(--font-body); cursor: pointer; }
+.chart-close:hover { background: var(--mint); }
+.clients { padding-top: 0; }
