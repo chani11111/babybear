@@ -844,7 +844,7 @@ html.a11y-cursor, html.a11y-cursor * {
 /* ---------- תחתית: מותג, כתובות וקישורים ---------- */
 .site-footer {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: 28px clamp(28px, 5vw, 64px);
   align-items: start;
   padding: 40px var(--gutter);
@@ -858,8 +858,31 @@ html.a11y-cursor, html.a11y-cursor * {
 .footer-address { font-style: normal; }
 .footer-address p { margin: 0 0 .6em; line-height: 1.6; }
 .footer-address strong { color: #fff; font-weight: 500; }
-.footer-more { display: flex; flex-direction: column; align-items: flex-start; }
-.site-footer .footer-links { flex-direction: column; gap: 0; }
+.footer-more {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 28px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, .2);
+}
+/* הקישורים בשורה אחת, עם קו דק ביניהם */
+.site-footer .footer-links { gap: 0; }
+.site-footer .footer-links a { position: relative; padding: 0 16px; }
+.site-footer .footer-links a:first-child { padding-inline-start: 0; }
+.site-footer .footer-links a + a::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  width: 1px;
+  height: 1em;
+  background: currentColor;
+  opacity: .5;
+  translate: 0 -50%;
+}
 @media (max-width: 900px) {
   .site-footer { grid-template-columns: minmax(0, 1fr); }
 }
@@ -867,11 +890,19 @@ html.a11y-cursor, html.a11y-cursor * {
 
 /* ---------- לוח הצבעים בשורת הצבעים ---------- */
 .color-chart { display: block; width: fit-content; margin-top: 12px; color: var(--teal); font-size: .92rem; text-decoration: none; }
-.color-chart img { display: block; width: 150px; height: auto; border-radius: 10px; box-shadow: 0 6px 18px rgba(23, 61, 74, .18); }
+.color-chart img { display: block; width: min(100%, 260px); height: auto; border-radius: 10px; box-shadow: 0 6px 18px rgba(23, 61, 74, .18); }
 .color-chart span { display: block; margin-top: 6px; text-decoration: underline; }
-.chart-dialog { max-width: min(92vw, 560px); max-height: 92vh; padding: 12px; border: 0; border-radius: 16px; background: #fff; overflow: auto; }
+.chart-dialog { max-width: min(94vw, 960px); max-height: 92vh; padding: 12px; border: 0; border-radius: 16px; background: #fff; overflow: auto; }
 .chart-dialog::backdrop { background: rgba(15, 38, 46, .72); }
 .chart-dialog img { display: block; width: 100%; height: auto; max-height: calc(92vh - 96px); object-fit: contain; border-radius: 10px; }
 .chart-close { margin-top: 10px; min-height: 44px; padding: 6px 24px; border: 1.5px solid var(--teal); border-radius: 999px; background: none; color: var(--teal); font: 500 1rem var(--font-body); cursor: pointer; }
 .chart-close:hover { background: var(--mint); }
 .clients { padding-top: 0; }
+
+@media (max-width: 600px) {
+  .site-footer .footer-links a { padding: 0 10px; font-size: .9rem; }
+  .site-footer .footer-links a:first-child { padding-inline-start: 0; }
+}
+@media (max-width: 600px) {
+  .site-footer { padding-inline-end: var(--gutter); padding-bottom: 120px; }
+}
