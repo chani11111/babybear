@@ -460,7 +460,7 @@ a { color: var(--teal); }
 }
 .packaging-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: clamp(20px, 4vw, 64px);
   align-items: center;
   padding: clamp(28px, 4.5vw, 64px);
@@ -484,12 +484,12 @@ a { color: var(--teal); }
   margin: 20px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(12px, 2.4vw, 32px);
 }
 .branding-photos img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius); }
 @media (min-width: 900px) {
-  .branding-photos li:nth-child(2) { margin-top: 44px; }
+  .branding-photos li:nth-child(even) { margin-top: 44px; }
 }
 
 /* ---------- לקוחות ---------- */
@@ -677,8 +677,6 @@ a { color: var(--teal); }
   .making-list li, .spec > div, .branding-points li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .process-steps { grid-template-columns: minmax(0, 1fr); }
   .branding-photos ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .branding-photos li:nth-child(3) { grid-column: 1 / -1; }
-  .branding-photos li:nth-child(3) img { aspect-ratio: 4 / 3; }
   .hero-actions .btn { flex: 1 1 100%; }
   .hero-copy { padding-bottom: 96px; }
 }
@@ -866,6 +864,3 @@ html.a11y-cursor, html.a11y-cursor * {
   .site-footer { grid-template-columns: minmax(0, 1fr); }
 }
 
-.packaging-figure { margin: 0; text-align: center; }
-.packaging-figure img { width: 100%; max-width: 340px; height: auto; mix-blend-mode: multiply; }
-.packaging-figure figcaption { margin-top: 6px; font-size: .92rem; color: var(--muted); }
