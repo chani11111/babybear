@@ -460,7 +460,7 @@ a { color: var(--teal); }
 }
 .packaging-panel {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: clamp(20px, 4vw, 64px);
   align-items: center;
   padding: clamp(28px, 4.5vw, 64px);
@@ -865,3 +865,7 @@ html.a11y-cursor, html.a11y-cursor * {
 @media (max-width: 900px) {
   .site-footer { grid-template-columns: minmax(0, 1fr); }
 }
+
+.packaging-figure { margin: 0; text-align: center; }
+.packaging-figure img { width: 100%; max-width: 340px; height: auto; mix-blend-mode: multiply; }
+.packaging-figure figcaption { margin-top: 6px; font-size: .92rem; color: var(--muted); }
