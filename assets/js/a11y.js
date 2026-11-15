@@ -12,10 +12,9 @@
 
   var defaults = { text: 0, line: false, font: false, contrast: false, gray: false, noimg: false, still: false, links: false, mask: false, cursor: false };
 
-  /* מי שהגדיר "הפחתת תנועה" במכשיר מתחיל עם "השהיית אנימציות" דלוקה (הסרטון עומד), ויכול לכבות אותה בתפריט */
+  /* סרטון הפתיחה שקט ואיטי ומתנגן כברירת מחדל; כפתור "השהיית אנימציות" עוצר אותו (WCAG 2.2.2). ההשהיה לא נשמרת בין ביקורים */
   function fresh() {
     var s = JSON.parse(JSON.stringify(defaults));
-    s.still = reduceMotion;
     return s;
   }
   var state = fresh();
@@ -23,7 +22,7 @@
   try {
     var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
     Object.keys(state).forEach(function (k) {
-      if (k in saved && typeof saved[k] === typeof state[k]) state[k] = saved[k];
+      if (k !== 'still' && k in saved && typeof saved[k] === typeof state[k]) state[k] = saved[k];
     });
   } catch (e) { /* אין אחסון מקומי: התפריט עדיין עובד, רק לא זוכר */ }
 
@@ -31,7 +30,7 @@
     try {
       var out = JSON.parse(JSON.stringify(state));
       /* ברירת המחדל של השהיית הסרטון לא נשמרת, כדי שלא תינעל גם אחרי ששינו את הגדרת התנועה במכשיר */
-      if (out.still === reduceMotion) delete out.still;
+      delete out.still;
       localStorage.setItem(KEY, JSON.stringify(out));
     } catch (e) { /* ignore */ }
   }
