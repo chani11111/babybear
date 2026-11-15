@@ -28,7 +28,12 @@
   } catch (e) { /* אין אחסון מקומי: התפריט עדיין עובד, רק לא זוכר */ }
 
   function save() {
-    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+    try {
+      var out = JSON.parse(JSON.stringify(state));
+      /* ברירת המחדל של השהיית הסרטון לא נשמרת, כדי שלא תינעל גם אחרי ששינו את הגדרת התנועה במכשיר */
+      if (out.still === reduceMotion) delete out.still;
+      localStorage.setItem(KEY, JSON.stringify(out));
+    } catch (e) { /* ignore */ }
   }
 
   function el(tag, cls, text) {
@@ -158,6 +163,28 @@
     moveMask(r.top + r.height / 2);
   });
 
+  /* ---------- הפעלת סרטון הפתיחה ----------
+     דפדפנים (בעיקר בטלפון, במצב חיסכון בסוללה או בנתונים) יכולים לדחות הפעלה אוטומטית.
+     לכן מנסים שוב כשהסרטון מוכן, כשהלשונית חוזרת להיות גלויה, ובמגע או גלילה הראשונים. */
+  function tryPlay() {
+    if (!video || state.still || !video.paused || document.hidden) return;
+    var p = video.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  if (video) {
+    ['loadeddata', 'canplay'].forEach(function (ev) { video.addEventListener(ev, tryPlay); });
+    document.addEventListener('visibilitychange', tryPlay);
+    var retry = ['touchstart', 'pointerdown', 'keydown', 'scroll'];
+    var onGesture = function () { tryPlay(); };
+    retry.forEach(function (ev) { window.addEventListener(ev, onGesture, { passive: true }); });
+    video.addEventListener('playing', function () {
+      retry.forEach(function (ev) { window.removeEventListener(ev, onGesture); });
+    });
+    video.addEventListener('pause', function () {
+      if (!state.still && !video.ended) setTimeout(tryPlay, 400);
+    });
+  }
+
   /* ---------- החלת ההגדרות על הדף ---------- */
   function apply() {
     root.classList.remove('a11y-text-1', 'a11y-text-2', 'a11y-text-3');
@@ -168,7 +195,7 @@
 
     if (video) {
       if (state.still) video.pause();
-      else if (video.paused) { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+      else tryPlay();
     }
 
     maskTop.hidden = maskBottom.hidden = !state.mask;
