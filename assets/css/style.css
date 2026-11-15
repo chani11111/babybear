@@ -211,6 +211,9 @@ a { color: var(--teal); }
   height: 100%;
   object-fit: cover;
   transition: opacity .8s ease;
+  /* שכבה קבועה במעבד הגרפי: מונע החלפת מסלול הצגה (והסטת גוון) כשמתחילים לגלול */
+  transform: translateZ(0);
+  will-change: opacity;
 }
 /* בסוף הסרטון הוא נמוג אל הפריים הראשון (התמונה שמאחוריו) ומתחיל מחדש, במקום קפיצה חדה */
 .hero-media.is-fading { opacity: 0; }
