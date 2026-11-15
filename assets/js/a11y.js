@@ -179,6 +179,17 @@
     video.addEventListener('playing', function () {
       retry.forEach(function (ev) { window.removeEventListener(ev, onGesture); });
     });
+    /* במקום לולאה רגילה (שקופצת בחדות בין הפריים האחרון לראשון), הסרטון נמוג בסופו ומתחיל מחדש */
+    video.loop = false;
+    video.removeAttribute('loop');
+    video.addEventListener('timeupdate', function () {
+      var d = video.duration;
+      if (d) video.classList.toggle('is-fading', d - video.currentTime < 0.9);
+    });
+    video.addEventListener('ended', function () {
+      video.currentTime = 0;
+      tryPlay();
+    });
     video.addEventListener('pause', function () {
       if (!state.still && !video.ended) setTimeout(tryPlay, 400);
     });
